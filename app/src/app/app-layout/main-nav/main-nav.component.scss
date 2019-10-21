@@ -33,3 +33,11 @@ mat-sidenav {
   color: #ceaf6e;
   font-weight: bolder;
 }
+
+.burger {
+  transition: 0.3s;
+}
+
+.rotate-burger {
+  transform: rotate(-90deg);
+}
