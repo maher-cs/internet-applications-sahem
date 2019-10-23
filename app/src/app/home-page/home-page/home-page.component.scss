@@ -1,0 +1,88 @@
+.img-container {
+  margin: 0;
+  height: 500px;
+  overflow: hidden;
+  background: url('../../../assets/images/thought-2123971_1280.jpg') no-repeat fixed top;
+  background-size: 1400px;
+}
+
+.landing-box {
+  margin-top: 200px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.landing-text {
+  color: #ffffff;
+  text-align: center;
+}
+
+.landing-search-box {
+  display: flex;
+  justify-content: center;
+}
+.landing-search-button {
+  z-index: 2;
+  flex-basis: 1;
+  padding: 1rem 1.5rem;
+  color: #ffffff;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  font-size: 1.2rem;
+  transition: .3s;
+  &:hover{
+    background: rgba(255, 255, 255, 0.253);
+    cursor: pointer;
+    border-radius: -0.3rem;
+  }
+}
+
+.how-row {
+  margin: 0;
+  overflow: hidden;
+  background: #ffffff;
+  display: flex;
+}
+
+.how-section {
+  margin: 3rem;
+  flex-basis: 1;
+}
+
+.how-heading {
+  color: #267c85;
+  text-align: center;
+}
+
+.how-list {
+  list-style: none;
+  li {
+    mat-icon, h3 {
+      display: inline-block;
+      margin: 1rem;
+    }
+    mat-icon {
+      color: #ceaf6e;
+    }
+    p {
+      margin: 0;
+      margin-right: 4.5rem;
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+.how-img {
+  margin: 3rem;
+  flex-basis: 1;
+  img {
+    display: block;
+    margin: 20% 30%;
+    width: 350px;
+  }
+}
+
+
+
+
+

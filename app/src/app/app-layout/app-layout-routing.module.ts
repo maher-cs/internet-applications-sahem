@@ -6,7 +6,17 @@ import { MainNavComponent } from './main-nav/main-nav.component';
 const routes: Routes = [
   {
     path: '',
-    component: MainNavComponent
+    component: MainNavComponent,
+    children: [
+      {
+        path: 'home',
+        loadChildren: () => import('../home-page/home-page.module').then(m => m.HomePageModule)
+      },
+      {
+        path: '',
+        redirectTo: 'home'
+      }
+    ]
   }
 ];
 
