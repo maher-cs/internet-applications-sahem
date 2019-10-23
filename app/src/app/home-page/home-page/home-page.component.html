@@ -10,28 +10,35 @@
   </div>
 </div>
 
-<div class="how-row">
-  <section class="how-section">
-    <h1 class="how-heading">كيف تُساهم؟</h1>
-    <ul class="how-list">
-      <li>
-        <mat-icon>check_circle</mat-icon>
-        <h3>اختر</h3>
-        <p>تصفح المشاريع وتختر ما يتناسب منها مع مهاراتك وتخصصك.</p>
-      </li>
-      <li>
-        <mat-icon>check_circle</mat-icon>
-        <h3>أعلن اختيارك</h3>
-        <p>تقدم إلى المشروع وسجل فيه كمساهم.</p>
-      </li>
-      <li>
-        <mat-icon>check_circle</mat-icon>
-        <h3>ابدأ العمل</h3>
-        <p>ابدأ بالعمل على المشروع.</p>
-      </li>
-    </ul>
-  </section>
-  <div class="how-img" *ngIf="!(isHandset$ | async)">
-    <img src="../../../assets/images/real-estate-agency.svg" alt="real-estate-agency">
+<div class="how-container">
+  <div class="container">
+    <div class="how-row">
+      <section class="how-section">
+        <h1 class="how-heading">كيف تُساهم؟</h1>
+        <ul class="how-list">
+          <li>
+            <mat-icon>check_circle</mat-icon>
+            <h3>اختر</h3>
+            <p>تصفح المشاريع وتختر ما يتناسب منها مع مهاراتك وتخصصك.</p>
+          </li>
+          <li>
+            <mat-icon>check_circle</mat-icon>
+            <h3>أعلن اختيارك</h3>
+            <p>تقدم إلى المشروع وسجل فيه كمساهم.</p>
+          </li>
+          <li>
+            <mat-icon>check_circle</mat-icon>
+            <h3>ابدأ العمل</h3>
+            <p>ابدأ بالعمل على المشروع.</p>
+          </li>
+        </ul>
+      </section>
+      <div class="how-img" *ngIf="!(isHandset$ | async)">
+        <img
+          src="../../../assets/images/real-estate-agency.svg"
+          alt="real-estate-agency"
+        />
+      </div>
+    </div>
   </div>
 </div>

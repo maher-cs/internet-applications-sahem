@@ -37,15 +37,20 @@
   }
 }
 
+.how-container {
+  background: #ffffff;
+}
+
 .how-row {
   margin: 0;
+  width: 100;
   overflow: hidden;
   background: #ffffff;
   display: flex;
 }
 
 .how-section {
-  margin: 3rem;
+  // margin: 3rem;
   flex-basis: 1;
 }
 
