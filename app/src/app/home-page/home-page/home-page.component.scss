@@ -26,12 +26,19 @@
   flex-basis: 1;
   padding: 1rem 1.5rem;
   color: #ffffff;
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.253);;
   font-size: 1.2rem;
-  transition: .3s;
+  border: 1px solid  rgba(255, 255, 255, 0.5);
+  outline: 1px solid;
+  outline-color: rgba(255, 255, 255, 0);
+  outline-offset: 1rem;
+  transition: .6s;
   &:hover{
-    background: rgba(255, 255, 255, 0.253);
+    font-style: bold;
+    outline: 0px solid;
+    outline-color: rgba(255, 255, 255, 0.5);
+    outline-offset: 0;
+    background: rgba(255, 255, 255, 0.453);
     cursor: pointer;
   }
 }

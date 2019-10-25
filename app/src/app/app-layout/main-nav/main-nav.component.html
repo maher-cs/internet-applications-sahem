@@ -5,11 +5,11 @@
       fixedInViewport
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) === false && false"
+      [opened]="!(isHandset$ | async) && !isHomePage"
     >
       <mat-toolbar>ابحث...</mat-toolbar>
       <mat-nav-list>
-        <a mat-list-item routerLink="/home-home">تصفح المشاريع</a>
+        <a mat-list-item routerLink="/projects/list">تصفح المشاريع</a>
         <a mat-list-item routerLink="">أضف مشروع</a>
         <a mat-list-item routerLink="">سجل دخول</a>
         <a mat-list-item routerLink="">حساب جديد</a>
@@ -31,8 +31,8 @@
             >menu</mat-icon
           >
         </button>
-        <div class="logo-container">
-          <img src="../../../assets/logo/logo.png" alt="شعار" class="logo" />
+        <div class="logo-container" routerLink="/home">
+          <img src="../../../assets/logo/logo.png" alt="شعار" class="logo"/>
           <span class="logo-text">ساهم</span>
         </div>
 
@@ -42,7 +42,7 @@
             أضف مشروع
           </button>
 
-          <button mat-button class="nav-button-link">
+          <button mat-button class="nav-button-link" routerLink="/projects/list">
             <mat-icon>layers</mat-icon>
             تصفح المشاريع
           </button>
