@@ -22,7 +22,7 @@
   justify-content: center;
 }
 .landing-search-button {
-  z-index: 2;
+  z-index: 1;
   flex-basis: 1;
   padding: 1rem 1.5rem;
   color: #ffffff;
@@ -33,7 +33,6 @@
   &:hover{
     background: rgba(255, 255, 255, 0.253);
     cursor: pointer;
-    border-radius: -0.3rem;
   }
 }
 
