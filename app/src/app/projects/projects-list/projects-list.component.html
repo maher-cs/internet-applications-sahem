@@ -1,1 +1,7 @@
-<p>projects-list works!</p>
+
+
+
+<div class="container margin-top">
+    <app-project-item *ngFor="let project of projects; let i = index" [project]="project" [animationOrder]="i"></app-project-item>
+
+</div>
