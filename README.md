@@ -26,4 +26,6 @@ for angular:
     npm install
     ng serve
 
+then open the browser on http://localhost:4200
+
 
