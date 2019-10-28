@@ -10,9 +10,11 @@ you can download node.js from https://nodejs.org/en/download/
 after downloading node.js, you need to install angular-cli
 
 windows > cmd:
+
     npm install -g @angular/cli
 
 Mac & Linux > Terminal:
+
     sudo npm install -g @angular/cli
 
 clone the project:
