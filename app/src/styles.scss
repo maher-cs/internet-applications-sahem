@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-
+@import "../node_modules/bootstrap-v4-rtl/dist/css/bootstrap-rtl.min.css";
 html,
 body {
   height: 100%;
@@ -12,12 +12,14 @@ body {
   font-family: 'Cairo', sans-serif;
 }
 
-.container {
-  width: 95%;
-  margin: 0 auto;
+h1, h2, h3, h4, h5, h6, p {
+  text-align: right;
 }
-@media screen and (min-width: 480px) {
-  .container {
-    width: 90%;
-  }
+
+.text-my {
+  color: #267c85;
+}
+
+.text-my-s {
+  color: #ceaf6e;
 }

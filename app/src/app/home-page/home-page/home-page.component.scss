@@ -1,7 +1,5 @@
 .img-container {
-  margin: 0;
   height: 500px;
-  overflow: hidden;
   background: url('../../../assets/images/thought-2123971_1280.jpg') no-repeat fixed top;
   background-size: 1400px;
 }
@@ -12,18 +10,10 @@
   margin-left: auto;
 }
 
-.landing-text {
-  color: #ffffff;
-  text-align: center;
-}
-
-.landing-search-box {
-  display: flex;
-  justify-content: center;
-}
 .landing-search-button {
+  margin: 1rem auto;
+  display: block;
   z-index: 1;
-  flex-basis: 1;
   padding: 1rem 1.5rem;
   color: #ffffff;
   background: rgba(255, 255, 255, 0.253);;
@@ -43,37 +33,16 @@
   }
 }
 
-.how-container {
-  background: #ffffff;
-}
-
-.how-row {
-  margin: 0;
-  width: 100;
-  overflow: hidden;
-  background: #ffffff;
-  display: flex;
-}
-
-.how-section {
-  flex-basis: 1;
-  flex-grow: 1;
-}
-
-.how-heading {
-  color: #267c85;
-  text-align: center;
-}
-
 .how-list {
   list-style: none;
   li {
+    margin-top: 3rem;
     mat-icon, h3 {
-      display: inline-block;
       margin: 1rem;
     }
     mat-icon {
       color: #ceaf6e;
+      float: right;
     }
     p {
       margin: 0;
@@ -84,9 +53,6 @@
 }
 
 .how-img {
-  margin: 3rem;
-  flex-basis: 1;
-  flex-grow: 1;
   img {
     display: block;
     margin: 0 auto;
@@ -100,37 +66,22 @@
 }
 
 .benfit-row {
-  margin: 0;
-  width: 100;
-  overflow: hidden;
   background: #003740;
-  display: flex;
-}
-
-.benfit-section {
-  flex-basis: 1;
-  flex-grow: 1;
-}
-
-.benfit-heading {
-  color: #ceaf6e;
-  text-align: center;
 }
 
 .benfit-list {
   list-style: none;
-  display: block;
-  margin: 0 auto;
   li {
+    margin-top: 3rem;
     h3 {
       color: #ffffff;
     }
     mat-icon, h3 {
-      display: inline-block;
       margin: 1rem;
     }
     mat-icon {
       color: #ceaf6e;
+      float: right;
     }
     p {
       margin: 0;

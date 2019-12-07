@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "title": "نظام إضافة مواد",
+        "category": "برمجة",
+        "datetime": "12-12-2019",
+        "status": "open",
+        "offers": [
+            {},
+            {},
+            {}
+        ],
+        "authority": {
+            "name": "كلية الدعوة وأصول الدين",
+            "account": {
+                "avatarURL": "../../../assets/images/default-avatar.png"
+            }
+        }
+    }
+]

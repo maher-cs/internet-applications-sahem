@@ -1,23 +1,25 @@
-<div class="img-container">
+<div class="img-container m-0 overflow-hidden">
     <app-backgroun-animation></app-backgroun-animation>
     <div class="landing-box">
-      <h1 class="landing-text">لنرتقِ بجامعتنا معًا</h1>
-      <div class="landing-search-box">
-        <button mat-button class="landing-search-button" routerLink="/projects/list">
-          اختر مشروعًا
-        </button>
+      <h1 class="text-white text-center">لنرتقِ بجامعتنا معًا</h1>
+      <div class="row justify-content-center">
+        <div class="col">
+          <button mat-button class="landing-search-button" routerLink="/projects/list">
+            اختر مشروعًا
+          </button>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="how-container">
+  <div class="bg-white">
     <div class="container">
-      <div class="how-row">
-        <section class="how-section">
-          <h1 class="how-heading">كيف تُساهم؟</h1>
+      <div class="m-0 w-100 overflow-hidden bg-white row">
+        <section class="col mt-5">
+          <h2 class="text-my text-center font-weight-bold">كيف تُساهم؟</h2>
           <ul class="how-list">
             <li>
-              <mat-icon>check_circle</mat-icon>
+              <mat-icon >check_circle</mat-icon>
               <h3>اختر</h3>
               <p>تصفح المشاريع وتختر ما يتناسب منها مع مهاراتك وتخصصك.</p>
             </li>
@@ -33,7 +35,7 @@
             </li>
           </ul>
         </section>
-        <div class="how-img" *ngIf="!(isHandset$ | async)">
+        <div class="col how-image m-3 mt-5 mb-5" *ngIf="!(isHandset$ | async)">
           <img
             src="../../../assets/images/real-estate-agency.svg"
             alt="real-estate-agency"
@@ -45,15 +47,15 @@
 
   <div class="benfit-container">
     <div class="container">
-      <div class="benfit-row row">
+      <div class="m-0 w-100 overflow-hidden row">
         <div class="benfit-img col" *ngIf="!(isHandset$ | async)">
           <img
             src="../../../assets/images/biomass.svg"
             alt="real-estate-agency"
           />
         </div>
-        <section class="benfit-section col">
-          <h1 class="benfit-heading">كيف تستفيد من ساهم؟</h1>
+        <section class="col">
+          <h2 class="text-my-s font-weight-bold text-center">كيف تستفيد من ساهم؟</h2>
           <ul class="benfit-list">
             <li>
               <mat-icon>check_circle</mat-icon>

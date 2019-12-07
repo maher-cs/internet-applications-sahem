@@ -1,10 +1,12 @@
 import { IOffer } from './offer.interface';
+import { IAccount } from './account.interface';
 
 export interface IStudent {
-  id: number;
-  name: string;
-  studentId: number;
-  major: string;
-  dateOfBirth: string;
-  offers: IOffer[];
+  studentId?: number;
+  name?: string;
+  brief?: string;
+  major?: string;
+  offers?: IOffer[];
+  skills?: string[];
+  account: IAccount;
 }
