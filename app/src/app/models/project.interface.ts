@@ -10,7 +10,7 @@ export interface IProject {
   skills?: string[];
   status?: string;
   offers?: IOffer[];
-  selectedOffer?: IOffer;
+  selectedOffers?: IOffer[];
   datetime?: string;
   duration?: number;
   progress?: number;

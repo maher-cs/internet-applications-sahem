@@ -4,6 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
 
 import { IProject } from '../models/project.interface';
+import { ICategory } from '../models/category.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -11,15 +12,22 @@ import { IProject } from '../models/project.interface';
 export class ProjectService {
 
   private projectsUrl = '../../assets/fake-data/projects-list.json';
-
+  private categoriesUrl = '../../assets/fake-data/categories.json';
+  
   constructor(private http: HttpClient) { }
 
   getProjects(): Observable<IProject[]> {
     return this.http.get<IProject[]>(this.projectsUrl)
       .pipe(
-        // tap(data => console.log('All: ' + JSON.stringify(data))),
         catchError(this.handleError)
       );
+  }
+
+  getCategories(): Observable<ICategory[]> {
+      return this.http.get<ICategory[]>(this.categoriesUrl)
+        .pipe(
+            catchError(this.handleError)
+        )
   }
 
   private handleError(err: HttpErrorResponse) {
