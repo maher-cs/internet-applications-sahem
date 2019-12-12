@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { Location } from '@angular/common';
 
@@ -26,6 +26,14 @@ export class MainNavComponent implements OnInit {
 
   ngOnInit() {
     this.checkHomePage();
+  }
+
+  isHandSet() {
+    let output: boolean;
+    this.isHandset$.subscribe(
+      result => output = result
+    ).unsubscribe();
+    return output;
   }
 
   checkHomePage() {

@@ -1,4 +1,5 @@
 <mat-card
+matRipple
   [@animate]="{
     value: '*',
     params: { delay: animationOrder * 150 + 'ms', y: '50px' }
@@ -15,17 +16,17 @@
       </mat-card-header>
       <mat-card-content>
         <div class="row mt-2">
-          <mat-card-subtitle class="col">
+          <mat-card-subtitle class="col-lg-3">
             <a [routerLink]="" class="text-decoration-none text-secondary">{{
               project.authority.name
             }}</a>
           </mat-card-subtitle>
-          <mat-card-subtitle class="col">
+          <mat-card-subtitle class="col-lg-3">
             {{ project.category }}</mat-card-subtitle
           >
-          <mat-card-subtitle class="col" [title]="project.datetime"> {{ project.datetime }}</mat-card-subtitle>
+          <mat-card-subtitle class="col-lg-3" [title]="project.datetime"> {{ project.datetime }}</mat-card-subtitle>
 
-          <mat-card-subtitle class="col">
+          <mat-card-subtitle class="col-lg-3">
             {{ project.offers?.length ? project.offers?.length : 0 }} عروض</mat-card-subtitle
           >
         </div>

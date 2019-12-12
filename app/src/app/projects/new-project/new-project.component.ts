@@ -22,6 +22,9 @@ export class NewProjectComponent implements OnInit, OnDestroy {
   skills: string[] = [];
   categories: ICategory[] = [];
 
+  // animation state
+  btnLoading = false;
+
   // subscriptions
   categoriesSubscription: Subscription;
   skillsSubscription: Subscription;
@@ -34,6 +37,12 @@ export class NewProjectComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.categoriesSubscription.unsubscribe();
+  }
+
+  // create project button clicked
+  createProject() {
+    this.btnLoading = true;
+    this.projectService.createProject();
   }
 
   // description form stuff
