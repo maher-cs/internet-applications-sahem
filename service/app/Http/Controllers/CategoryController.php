@@ -14,7 +14,14 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::get()->toArray();
+
+        for($i = 0; $i < sizeof($categories); $i++)
+        {
+            $categories[$i] = $categories[$i]['category'];
+        }
+
+        return response()->json($categories);
     }
 
     /**

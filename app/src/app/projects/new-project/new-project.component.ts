@@ -3,7 +3,6 @@ import { FormControl, Validators } from '@angular/forms';
 import { SharedAnimations } from 'src/app/shared/animation/shared-animations';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material';
-import { ICategory } from 'src/app/models/category.interface';
 import { ProjectService } from 'src/app/services/project.service';
 import { Subscription } from 'rxjs';
 
@@ -20,7 +19,7 @@ export class NewProjectComponent implements OnInit, OnDestroy {
   deliveryDate = new FormControl('', [Validators.required]);
   category = new FormControl('', [Validators.required]);
   skills: string[] = [];
-  categories: ICategory[] = [];
+  categories: string[] = [];
 
   // animation state
   btnLoading = false;

@@ -65,8 +65,8 @@
             <mat-form-field class="w-100">
               <mat-label>التصنيف</mat-label>
               <mat-select [formControl]="category">
-                <mat-option *ngFor="let cate of categories" [value]="cate.id">
-                  {{ cate.category }}
+                <mat-option *ngFor="let cate of categories" [value]="cate">
+                  {{ cate }}
                 </mat-option>
               </mat-select>
               <mat-error>يُرجى تحديد التصنيف</mat-error>

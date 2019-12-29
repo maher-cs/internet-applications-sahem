@@ -4,14 +4,14 @@ import { IAuthority } from './authority.interface';
 export interface IProject {
   id?: number;
   title?: string;
-  authority?: IAuthority;
-  category?: string;
   description?: string;
-  skills?: string[];
-  status?: string;
-  offers?: IOffer[];
-  selectedOffers?: IOffer[];
-  datetime?: string;
-  duration?: number;
   progress?: number;
+  end_date?: string;
+  created_at?: string;
+  updated_at?: string;
+  authority?: IAuthority;
+  status?: string;
+  category?: string;
+  skills?: string[];
+  
 }

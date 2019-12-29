@@ -3,15 +3,9 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
 
-// import  {api}  from './api';
+import  {api}  from './api';
 
 import { IProject } from '../models/project.interface';
-import { ICategory } from '../models/category.interface';
-
-const api = {
-  projectsUrl: "../../assets/fake-data/projects-list.json",
-  categoriesUrl: "../../assets/fake-data/categories.json"
-};
 
 @Injectable({
   providedIn: 'root'
@@ -27,8 +21,8 @@ export class ProjectService {
       );
   }
 
-  getCategories(): Observable<ICategory[]> {
-      return this.http.get<ICategory[]>(api.categoriesUrl)
+  getCategories(): Observable<string[]> {
+      return this.http.get<string[]>(api.categoriesUrl)
         .pipe(
             catchError(this.handleError)
         )

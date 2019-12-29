@@ -1,4 +1,6 @@
+const apiUrl = 'http://localhost:8000/api/';
+
 export const api = {
-  projectsUrl: "../../assets/fake-data/projects-list.json",
-  categoriesUrl: "../../assets/fake-data/categories.json"
+  projectsUrl: apiUrl + 'projects',
+  categoriesUrl: apiUrl + 'categories'
 };
