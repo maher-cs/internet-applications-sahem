@@ -25,4 +25,9 @@ class Project extends Model
     {
         return $this->belongsTo('App\Category');
     }
+
+    public function offers()
+    {
+        return $this->hasMany('App\Offer')->with('status')->with('student');
+    }
 }

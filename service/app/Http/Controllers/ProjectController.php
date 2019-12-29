@@ -33,16 +33,6 @@ class ProjectController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -59,20 +49,32 @@ class ProjectController extends Controller
      * @param  \App\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function show(Project $project)
+    public function show($id)
     {
-        //
-    }
+        try {
+            $project = Project::findOrFail($id);
+        } catch (\Exception $exception) {
+            return response()->json([
+                'message' => 'no project found with id: ' . $id,
+                'execption' => $exception
+            ], 404);
+        }
+        
+        $project = $project->with('authority')->with('status')->with('category')->with('offers')->get()->toArray()[0];
+        
+        // cleaning api
+        $project['status'] = $project['status']['status'];
+        unset($project['status_id']);
+        $project['category'] = $project['category']['category'];
+        unset($project['category_id']);
+        unset($project['authority_id']);
+        for($i = 0; $i < sizeof($project['offers']); $i++)
+        {
+            $project['offers'][$i]['status'] = $project['offers'][$i]['status']['status'];
+            unset($project['offers'][$i]['status_id']);
+        }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Project  $project
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Project $project)
-    {
-        //
+        return response()->json($project);
     }
 
     /**

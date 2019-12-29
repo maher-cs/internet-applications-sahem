@@ -18,6 +18,6 @@ class Offer extends Model
 
     public function status()
     {
-        return $this->hasOne('App\OfferStatus');
+        return $this->belongsTo('App\OfferStatus');
     }
 }

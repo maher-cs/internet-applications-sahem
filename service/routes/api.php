@@ -19,6 +19,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 // projects routes
 Route::get('projects', 'ProjectController@index');
+Route::get('projects/{id}', 'ProjectController@show');
+Route::post('projects', 'ProjectController@store');
 
 // categories routes
 Route::get('categories', 'CategoryController@index');
