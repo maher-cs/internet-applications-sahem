@@ -13,7 +13,6 @@
         <a mat-list-item routerLink="/projects/new" (click)="isHandSet() ? drawer.close() : false">أضف مشروع</a>
         <a mat-list-item routerLink="" (click)="isHandSet() ? drawer.close() : false">سجل دخول</a>
         <a mat-list-item routerLink="">حساب جديد</a>
-        <!-- <a mat-list-item routerLink="" (click)="drawer.close()">حساب جديد</a> -->
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
@@ -38,7 +37,7 @@
         </div>
 
         <div *ngIf="!(isHandset$ | async)" class="nav-links">
-          <button mat-button class="nav-button-link">
+          <button mat-button class="nav-button-link" routerLink="/projects/new">
             <mat-icon>add</mat-icon>
             أضف مشروع
           </button>

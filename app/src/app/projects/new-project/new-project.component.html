@@ -103,7 +103,7 @@
           type="button"
           class="row cbtn"
           (click)="createProject()"
-          [disabled]="btnLoading"
+          [disabled]="btnLoading || newProjectForm.invalid"
         >
           <span *ngIf="btnLoading" class="col">جارِ الإضافة..</span>
           <span *ngIf="btnLoading" class="col"
