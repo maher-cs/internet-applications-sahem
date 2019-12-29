@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Project;
+use App\Authority;
+
 use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\DB;
 
 class ProjectController extends Controller
 {
@@ -14,7 +18,18 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        //
+        $projects = Project::where('status_id', 1)->with('authority')->with('status')->with('category')->get()->toArray();
+
+        for($i = 0; $i < sizeof($projects); $i++)
+        {
+            $projects[$i]['status'] = $projects[$i]['status']['status'];
+            unset($projects[$i]['status_id']);
+            $projects[$i]['category'] = $projects[$i]['category']['category'];
+            unset($projects[$i]['category_id']);
+            unset($projects[$i]['authority_id']);
+        }
+
+        return response()->json($projects);
     }
 
     /**

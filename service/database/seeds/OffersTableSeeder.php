@@ -16,13 +16,17 @@ class OffersTableSeeder extends Seeder
                 'description' => 'لدي خبرة سابقة في برمجة المواقع ويمكنني تنفيذ المطلوب خلال المدة المحددة إن شاء الله',
                 'status_id' => '1',
                 'project_id' => '1',
-                'student_id' => '2'
+                'student_id' => '2',
+                'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+                'updated_at' => \Carbon\Carbon::now()->toDateTimeString()
             ],
             [
                 'description' => 'عملت على عدة موقع سابقًا ولدي خبرة جيدة في برمجتها، ويمكنني تنفيذ المطلوب كمشروع مقرر تطبيقات الانترنت',
                 'status_id' => '1',
                 'project_id' => '1',
-                'student_id' => '1'
+                'student_id' => '1',
+                'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+                'updated_at' => \Carbon\Carbon::now()->toDateTimeString()
             ]         
         ]);
     }

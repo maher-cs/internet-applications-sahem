@@ -13,7 +13,7 @@ class CategoriesTableSeeder extends Seeder
     {
         DB::table('categories')->insert([
             [
-                'category' => 'البرمجيات',
+                'category' => 'البرمجيات'
             ],
             [
                 'category' => 'التسويق',

@@ -15,10 +15,14 @@ class SkillStudentTableSeeder extends Seeder
             [
                 'skill_id' => '1',
                 'student_id' => '1',
+                'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+                'updated_at' => \Carbon\Carbon::now()->toDateTimeString()
             ],
             [
                 'skill_id' => '1',
                 'student_id' => '2',
+                'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+                'updated_at' => \Carbon\Carbon::now()->toDateTimeString()
             ]
         ]);
     }

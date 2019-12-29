@@ -16,25 +16,33 @@ class UsersTableSeeder extends Seeder
                 'username' => 'maher',
                 'email' => 'maher@maher.com',
                 'password' => '123456',
-                'role_id' => '2'
+                'role_id' => '2',
+                'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+                'updated_at' => \Carbon\Carbon::now()->toDateTimeString()
             ],
             [
                 'username' => 'cis',
                 'email' => 'cis@uqu.com',
                 'password' => '123456',
-                'role_id' => '1'
+                'role_id' => '1',
+                'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+                'updated_at' => \Carbon\Carbon::now()->toDateTimeString()
             ],
             [
                 'username' => 'arabic',
                 'email' => 'arabic@uqu.com',
                 'password' => '123456',
-                'role_id' => '1'
+                'role_id' => '1',
+                'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+                'updated_at' => \Carbon\Carbon::now()->toDateTimeString()
             ],
             [
                 'username' => 'osama',
                 'email' => 'osama@osama.com',
                 'password' => '123456',
-                'role_id' => '2'
+                'role_id' => '2',
+                'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+                'updated_at' => \Carbon\Carbon::now()->toDateTimeString()
             ]
         ]);
     }

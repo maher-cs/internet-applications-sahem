@@ -16,7 +16,6 @@ class CreateOfferStatusesTable extends Migration
         Schema::create('offer_statuses', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('status');
-            $table->timestamps();
         });
     }
 

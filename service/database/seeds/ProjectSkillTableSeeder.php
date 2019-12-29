@@ -15,10 +15,14 @@ class ProjectSkillTableSeeder extends Seeder
             [
                 'skill_id' => '1',
                 'project_id' => '1',
+                'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+                'updated_at' => \Carbon\Carbon::now()->toDateTimeString()
             ],
             [
                 'skill_id' => '5',
                 'project_id' => '2',
+                'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+                'updated_at' => \Carbon\Carbon::now()->toDateTimeString()
             ]
         ]);
     }

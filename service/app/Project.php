@@ -10,4 +10,19 @@ class Project extends Model
     {
         return $this->belongsToMany('App\Skill');
     }
+
+    public function authority()
+    {
+        return $this->belongsTo('App\Authority');
+    }
+
+    public function status()
+    {
+        return $this->belongsTo('App\ProjectStatus');
+    }
+
+    public function category()
+    {
+        return $this->belongsTo('App\Category');
+    }
 }
