@@ -104,6 +104,7 @@
           class="row cbtn"
           (click)="createProject()"
           [disabled]="btnLoading || newProjectForm.invalid"
+          title="{{ newProjectForm.invalid ? 'أكمل الحقول المطلوبة لتتمكن من الإضافة' : 'إضافة المشروع'}}"
         >
           <span *ngIf="btnLoading" class="col">جارِ الإضافة..</span>
           <span *ngIf="btnLoading" class="col"

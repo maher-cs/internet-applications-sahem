@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError, tap, map } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 
 import  {api}  from './api';
 
@@ -16,6 +16,13 @@ export class ProjectService {
 
   getProjects(): Observable<IProject[]> {
     return this.http.get<IProject[]>(api.projectsUrl)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  getProject(id: number): Observable<IProject> {
+    return this.http.get<IProject>(`${api.projectDetUrl}${id}`)
       .pipe(
         catchError(this.handleError)
       );

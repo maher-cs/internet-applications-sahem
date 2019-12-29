@@ -7,10 +7,11 @@ import { ProjectsListComponent } from './projects-list/projects-list.component';
 import { ProjectItemComponent } from './project-item/project-item.component';
 import { NewProjectComponent } from './new-project/new-project.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProjectDetailsComponent } from './project-details/project-details.component';
 
 
 @NgModule({
-  declarations: [ProjectsListComponent, ProjectItemComponent, NewProjectComponent],
+  declarations: [ProjectsListComponent, ProjectItemComponent, NewProjectComponent, ProjectDetailsComponent],
   imports: [
     CommonModule,
     ProjectsRoutingModule,
