@@ -60,7 +60,7 @@ class ProjectController extends Controller
             ], 404);
         }
         
-        $project = $project->with('authority')->with('status')->with('category')->with('offers')->get()->toArray()[0];
+        $project = $project->where('id','=',$id)->with('authority')->with('status')->with('category')->with('offers')->get()->toArray()[0];
         
         // cleaning api
         $project['status'] = $project['status']['status'];
