@@ -16,6 +16,11 @@ class Student extends Model
         return $this->belongsTo('App\User');
     }
 
+    public function major()
+    {
+        return $this->belongsTo('App\Major');
+    }
+
     public function offers()
     {
         return $this->hasMany('App\Offer');

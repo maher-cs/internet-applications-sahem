@@ -8,7 +8,7 @@ class Offer extends Model
 {
     public function student()
     {
-        return $this->belongsTo('App\Student');
+        return $this->belongsTo('App\Student')->with('major');
     }
 
     public function project()

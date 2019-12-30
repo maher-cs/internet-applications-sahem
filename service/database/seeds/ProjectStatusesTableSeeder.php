@@ -13,10 +13,10 @@ class ProjectStatusesTableSeeder extends Seeder
     {
         DB::table('project_statuses')->insert([
             [
-                'status' => 'استقبال العروض'
+                'status' => 'مفتوح'
             ],
             [
-                'status' => 'تحت التنفيذ'
+                'status' => 'مغلق'
             ],
             [
                 'status' => 'مكتمل'

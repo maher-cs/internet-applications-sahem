@@ -60,7 +60,7 @@ class ProjectController extends Controller
             ], 404);
         }
         
-        $project = $project->where('id','=',$id)->with('authority')->with('status')->with('category')->with('offers')->get()->toArray()[0];
+        $project = $project->where('id','=',$id)->with('authority')->with('status')->with('category')->with('offers')->with('skills')->get()->toArray()[0];
         
         // cleaning api
         $project['status'] = $project['status']['status'];
@@ -72,6 +72,14 @@ class ProjectController extends Controller
         {
             $project['offers'][$i]['status'] = $project['offers'][$i]['status']['status'];
             unset($project['offers'][$i]['status_id']);
+
+            $project['offers'][$i]['student']['major'] = $project['offers'][$i]['student']['major']['major'];
+            unset($project['offers'][$i]['student']['major_id']);
+        }
+
+        for($i = 0; $i < sizeof($project['skills']); $i++)
+        {
+            $project['skills'][$i] = $project['skills'][$i]['skill'];
         }
 
         return response()->json($project);
