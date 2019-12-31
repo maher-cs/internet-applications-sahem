@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\Skill;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,17 +18,19 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+// login & register
 Route::post('login', 'UserController@login');
 Route::post('register', 'UserController@register');
-
-Route::group(['middleware' => 'auth:api'], function(){
+Route::group(['middleware' => ['auth:api']], function(){
     Route::post('logout', 'UserController@logout');
 });
 
 // projects routes
 Route::get('projects', 'ProjectController@index');
 Route::get('projects/{id}', 'ProjectController@show');
-Route::post('projects', 'ProjectController@store');
+Route::group(['middleware' => ['auth:api', 'isAuthority']], function(){
+    Route::post('projects', 'ProjectController@store');
+});
 
 // categories routes
 Route::get('categories', 'CategoryController@index');
