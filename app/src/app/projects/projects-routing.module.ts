@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ProjectsListComponent } from './projects-list/projects-list.component';
 import { NewProjectComponent } from './new-project/new-project.component';
 import { ProjectDetailsComponent } from './project-details/project-details.component';
+import { AuthorityGaurd } from '../gaurds/authority.gaurd';
 
 
 const routes: Routes = [
@@ -12,6 +13,7 @@ const routes: Routes = [
   },
   {
     path: 'new',
+    canActivate: [AuthorityGaurd],
     component: NewProjectComponent
   },
   {
