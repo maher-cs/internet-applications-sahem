@@ -7,5 +7,7 @@ export const api = {
   loginUrl: apiUrl + 'login',
   logoutUrl: apiUrl + 'logout',
   registerUrl: apiUrl + 'register',
-  newProjectUrl: apiUrl + 'projects/create'
+  newProjectUrl: apiUrl + 'projects/create',
+  newOfferUrl: apiUrl + 'offers/create',
+  acceptOfferUrl: apiUrl + 'offers/accept'
 };

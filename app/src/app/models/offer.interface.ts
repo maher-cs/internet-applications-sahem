@@ -5,9 +5,11 @@ import { IRate } from './rate.interface';
 
 export interface IOffer {
   id?: number;
+  offer_id?: number;
   project?: IProject;
+  project_id?: number;
   students?: IStudent;
-  descirption?: string;
+  description?: string;
   status?: string;
   rate?: IRate[];
   datetime?: string;

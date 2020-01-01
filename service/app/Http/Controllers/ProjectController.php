@@ -92,7 +92,7 @@ class ProjectController extends Controller
             $project = Project::findOrFail($id);
         } catch (\Exception $exception) {
             return response()->json([
-                'message' => 'no project found with id: ' . $id,
+                'message' => 'لا يوجد مشروع بهذا الرقم!',
                 'execption' => $exception
             ], 404);
         }

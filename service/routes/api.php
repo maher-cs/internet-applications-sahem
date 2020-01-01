@@ -30,6 +30,7 @@ Route::get('projects', 'ProjectController@index');
 Route::get('projects/{id}', 'ProjectController@show');
 Route::group(['middleware' => ['auth:api', 'isAuthority']], function(){
     Route::post('projects/create', 'ProjectController@store');
+    Route::post('offers/accept', 'OfferController@accept');
 });
 
 // offers routes

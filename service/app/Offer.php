@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Offer extends Model
 {
     protected $fillable = [
-        'description', 'student_id', 'project_id'
+        'description', 'student_id', 'project_id', 'status_id'
     ];
     
     public function student()

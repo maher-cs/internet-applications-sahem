@@ -3,7 +3,7 @@ import { SharedAnimations } from 'src/app/shared/animation/shared-animations';
 import { ProjectService } from 'src/app/services/project.service';
 import { Observable, Subscription } from 'rxjs';
 import { IProject } from 'src/app/models/project.interface';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { shareReplay, map } from 'rxjs/operators';
 import { FormControl, Validators } from '@angular/forms';
@@ -24,7 +24,6 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
   isAuthorityOwnProject: boolean;
 
   // project information
-  private projectSubscription: Subscription;
   project: IProject;
 
   // new offer form
@@ -32,6 +31,11 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
 
   // new offer animation state
   btnLoading = false;
+
+  // subscriptions
+  private projectSubscription: Subscription;
+  private newOfferSub: Subscription;
+  private acceptOfferSub: Subscription;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -43,7 +47,8 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
     private projectsService: ProjectService,
     private route: ActivatedRoute,
     private breakpointObserver: BreakpointObserver,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -53,6 +58,12 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.projectSubscription.unsubscribe();
+    if(this.newOfferSub) {
+      this.newOfferSub.unsubscribe();
+    }
+    if(this.acceptOfferSub) {
+      this.acceptOfferSub.unsubscribe();
+    }
   }
 
   getProject(): Subscription {
@@ -61,6 +72,9 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
       project => {
         this.project = project;
         this.doesAuthorityOwnProject();
+      },
+      err => {
+        this.router.navigateByUrl("/projects/list")
       }
     );
   }
@@ -72,6 +86,33 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
 
   createOffer() {
     this.btnLoading = true;
+    let offer = {
+      description: this.description.value,
+      project_id: this.project.id
+    };
+    this.newOfferSub = this.projectsService.createOffer(offer).subscribe(
+      data => {
+        this.btnLoading = false;
+        this.getProject();
+      },
+      err => {
+        this.btnLoading = false;
+      }
+    )
+  }
+
+  acceptOffer(offer_id: number) {
+    this.btnLoading = true;
+    let offer = {
+      offer_id: offer_id
+    };
+    this.acceptOfferSub = this.projectsService.acceptOffer(offer).subscribe(
+      data => {
+        this.btnLoading = false;
+        this.router.navigateByUrl("/projects/list");
+      },
+      err => this.btnLoading = false
+    )
   }
 
 }

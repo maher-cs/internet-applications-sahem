@@ -6,6 +6,8 @@ import { catchError } from 'rxjs/operators';
 import  {api}  from './api';
 
 import { IProject } from '../models/project.interface';
+import { IOffer } from '../models/offer.interface';
+import { stringify } from 'querystring';
 
 @Injectable({
   providedIn: 'root'
@@ -39,6 +41,20 @@ export class ProjectService {
     return this.http.post<{project:IProject}>(api.newProjectUrl, project)
         .pipe(
             catchError(this.handleError)
+        )
+  }
+
+  createOffer(offer: IOffer) {
+    return this.http.post<{offer: IOffer}>(api.newOfferUrl, offer)
+        .pipe(
+          catchError(this.handleError)
+        )
+  }
+
+  acceptOffer(offer: IOffer) {
+    return this.http.post<{message:string;offer?:IOffer}>(api.acceptOfferUrl, offer)
+        .pipe(
+          catchError(this.handleError)
         )
   }
 

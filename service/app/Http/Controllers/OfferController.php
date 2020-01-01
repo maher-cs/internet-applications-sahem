@@ -72,6 +72,36 @@ class OfferController extends Controller
         ], 200);
     }
 
+    public function accept(Request $request)
+    {
+        $validator = Validator::make($request->all(), [ 
+            'offer_id' => 'required', 
+        ]);
+
+        $data = $request->all();
+
+        try {
+            Offer::firstOrFail()->where('id', '=', $data['offer_id'])->get()->toArray()[0];
+        } catch (\Exception $exception) {
+            return response()->json([
+                'message' => 'عرض غير موجود',
+                'execption' => $exception
+            ], 400);
+        }
+
+        $offer = Offer::find($data['offer_id']);
+        $offer->status_id = 2;
+        $offer->save();
+
+        $project = Project::find($offer->project_id);
+        $project->status_id = 2;
+        $project->save();
+
+        return response()->json([
+            'message'=>'تم تسجيل العرض كمقبول',
+        ], 200);
+    }
+
     /**
      * Display the specified resource.
      *
