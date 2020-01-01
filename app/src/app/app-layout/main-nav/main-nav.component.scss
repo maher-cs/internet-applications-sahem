@@ -1,10 +1,10 @@
 
 .sidenav-container {
-  min-height: 100vh;
   height: 100%;
 }
 
 .nav-side-container {
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
 }
