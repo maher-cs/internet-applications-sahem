@@ -1,0 +1,35 @@
+<div class="h-100 w-100 pt-5 bg-color">
+    <app-backgroun-animation></app-backgroun-animation>
+    <div class="container">
+        <mat-card class="d-block mx-auto fit" 
+        [@animate]="{
+            value: '*',
+            params: { delay: 150 + 'ms', y: '50px' }
+          }"
+        >
+            <nav mat-tab-nav-bar mat-align-tabs="center" [backgroundColor]="background">
+                <a
+                  mat-tab-link
+                  class="text-decoration-none"
+                  routerLink = "/session/login"
+                  (click) = "activeLink = '/session/login'"
+                  [active]="activeLink == '/session/login'"
+                  class="text-center"
+                >
+                  تسجيل دخول
+                </a>
+                <a
+                  mat-tab-link
+                  class="text-decoration-none"
+                  routerLink = "/session/register"
+                  (click) = "activeLink = '/session/register'"
+                  [active]="activeLink == '/session/register'"
+                  class="text-center"
+                >
+                  إنشاء حساب
+                </a>
+              </nav>
+              <router-outlet></router-outlet>
+        </mat-card>
+    </div>
+</div>

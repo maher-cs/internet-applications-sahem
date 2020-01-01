@@ -9,7 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { MatProgressBarModule } from '@angular/material';
+import { MatProgressBarModule, MatMenuModule, MatMenuTrigger } from '@angular/material';
 
 
 @NgModule({
@@ -23,7 +23,8 @@ import { MatProgressBarModule } from '@angular/material';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatMenuModule
   ]
 })
 export class AppLayoutModule { }

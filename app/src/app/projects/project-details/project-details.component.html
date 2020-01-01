@@ -118,7 +118,7 @@
   <!-- OFFER INPUT -->
   <div class="row my-3">
     <!-- new offer if not auth -->
-    <mat-card class="col-12 my-1">
+    <mat-card *ngIf="!(isLoggedIn$ | async)" class="col-12 my-1">
       <mat-card-header class="border-bottom mb-2">
         <mat-card-title class="font-weight-bold"
           >لا يمكنك تقديم عرض</mat-card-title
@@ -133,7 +133,7 @@
     </mat-card>
 
     <!-- new offer if auth -->
-    <mat-card class="col-12 my-1">
+    <mat-card *ngIf="(isStudent$ | async)" class="col-12 my-1">
       <mat-card-header class="border-bottom mb-2">
         <mat-card-title class="font-weight-bold">قدم عرضك</mat-card-title>
       </mat-card-header>
@@ -203,13 +203,14 @@
     <!-- offers list -->
     <mat-card *ngFor="let offer of project?.offers" class="col-12 border">
       <div class="row">
+        
         <div *ngIf="!(isHandset$ | async)" class="col-2 avatar-container-offer">
           <img src="../../../assets/images/default-avatar.png" alt="" />
         </div>
         <div class="col">
           <mat-card-content>
             <div class="row mt-2">
-              <mat-card-subtitle class="col-12 m-0">
+              <mat-card-subtitle class="col-8 col-lg-10 m-0">
                 <a
                   [routerLink]="'/home'"
                   class="text-decoration-none text-dark"
@@ -218,6 +219,25 @@
                   }}</a
                 >
               </mat-card-subtitle>
+              <div class="col-2" *ngIf="isAuthorityOwnProject">
+                <button
+                  mat-raised-button
+                  color="primary"
+                  type="button"
+                  class="row cbtn"
+                  (click)="acceptOffer()"
+                >
+                  <span *ngIf="btnLoading" class="col">جارِ الإضافة..</span>
+                  <span *ngIf="btnLoading" class="col">
+                    <mat-spinner
+                      class="d-inline-block mt-2"
+                      diameter="20"
+                      color="primary"
+                    ></mat-spinner>
+                  </span>
+                  <span *ngIf="!btnLoading" class="col">قبول</span>
+                </button>
+              </div>
               <mat-card-subtitle class="col-12 m-0">
                 <p class="text-decoration-none text-muted">
                   <small>{{ offer.student.major }}</small>
@@ -228,6 +248,7 @@
               </mat-card-subtitle>
             </div>
           </mat-card-content>
+
         </div>
       </div>
     </mat-card>

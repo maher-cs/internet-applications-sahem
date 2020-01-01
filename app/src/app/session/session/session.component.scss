@@ -1,0 +1,20 @@
+.bg-color {
+    background-color: #003740;
+}
+
+a {
+    &:hover {
+        color: black;
+        text-decoration: none;
+    }
+}
+
+.fit {
+    width: fit-content;
+}
+
+@media (max-width: 768px) {
+    .fit {
+        width: 100%;
+    }
+}

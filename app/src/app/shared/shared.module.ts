@@ -7,7 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material';
+import { MatNativeDateModule, MatTabsModule } from '@angular/material';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -27,7 +27,8 @@ import { MatRippleModule } from '@angular/material/core';
     MatSelectModule,
     MatButtonModule,
     MatProgressSpinnerModule,
-    MatRippleModule
+    MatRippleModule,
+    MatTabsModule
   ],
   exports: [
     BackgrounAnimationComponent,
@@ -41,7 +42,8 @@ import { MatRippleModule } from '@angular/material/core';
     MatSelectModule,
     MatButtonModule,
     MatProgressSpinnerModule,
-    MatRippleModule
+    MatRippleModule,
+    MatTabsModule
   ],
   providers: [
     MatDatepickerModule

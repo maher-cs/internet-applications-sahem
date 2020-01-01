@@ -6,4 +6,5 @@ export interface IAuthority {
   name?: string;
   projects?: IProject[];
   account?: IAccount;
+  user_id?: number;
 }

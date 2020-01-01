@@ -1,0 +1,58 @@
+<div
+  [@animate]="{
+    value: '*',
+    params: { delay: 150 + 'ms', y: '50px' }
+  }" class="row"
+>
+<div class=" mt-5 col-12 d-flex">
+    <mat-form-field class="w-100">
+      <input
+        matInput
+        placeholder="أدخل بريدك الاكتروني"
+        [formControl]="email"
+        required
+      />
+      <mat-error *ngIf="email.invalid"
+        >يرجى إدخال البريد الاكتروني</mat-error
+      >
+    </mat-form-field>
+  </div>
+  <div class="col-12 d-flex">
+    <mat-form-field class="w-100">
+      <input
+        matInput
+        type="password"
+        placeholder="أدخل كلمة المرور"
+        [formControl]="password"
+        required
+      />
+      <mat-error *ngIf="email.invalid"
+        >يرجى إدخال كلمة المرور</mat-error
+      >
+    </mat-form-field>
+  </div>
+  <div class="col-12 d-flex">
+    <button
+      mat-raised-button
+      color="primary"
+      type="button"
+      class="row"
+      (click)="login()"
+      [disabled]="btnLoading || loginForm.invalid"
+      title="{{ loginForm.invalid ? 'أكمل الحقول المطلوبة لتتمكن من تسجيل الدخول' : 'سجل دخول'}}"
+    >
+      <span *ngIf="btnLoading" class="col">جارِ تسجيل الدخول..</span>
+      <span *ngIf="btnLoading" class="col"
+        ><mat-spinner
+          class="d-inline-block mt-2"
+          diameter="20"
+          color="primary"
+        ></mat-spinner
+      ></span>
+      <span *ngIf="!btnLoading" class="col">تسجيل الدخول</span>
+    </button>
+  </div>
+  <div class="col-12">
+    <a class="d-block mx-auto text-center" routerLink="/home">الصفحة الرئيسية</a>
+  </div>
+</div>

@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { shareReplay, map } from 'rxjs/operators';
 import { FormControl, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-project-details',
@@ -15,6 +16,12 @@ import { FormControl, Validators } from '@angular/forms';
   animations: [SharedAnimations]
 })
 export class ProjectDetailsComponent implements OnInit, OnDestroy {
+
+  isLoggedIn$: Observable<boolean> = this.authService.loggedIn$;
+  isStudent$: Observable<boolean> = this.authService.isStudent$;
+  isAuthority$: Observable<boolean> = this.authService.isAuthority$;
+
+  isAuthorityOwnProject: boolean;
 
   // project information
   private projectSubscription: Subscription;
@@ -35,11 +42,13 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
   constructor(
     private projectsService: ProjectService,
     private route: ActivatedRoute,
-    private breakpointObserver: BreakpointObserver
+    private breakpointObserver: BreakpointObserver,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
     this.projectSubscription = this.getProject();
+    
   }
 
   ngOnDestroy() {
@@ -49,8 +58,16 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
   getProject(): Subscription {
     const projectId = this.route.snapshot.params.id;
     return this.projectsService.getProject(projectId).subscribe(
-      project => this.project = project
+      project => {
+        this.project = project;
+        this.doesAuthorityOwnProject();
+      }
     );
+  }
+
+  doesAuthorityOwnProject() {
+    const user_id = +localStorage.getItem('id');
+    this.isAuthorityOwnProject = user_id == this.project.authority.user_id;
   }
 
   createOffer() {

@@ -13,5 +13,6 @@ export interface IProject {
   status?: string;
   category?: string;
   skills?: string[];
-  
+  offers_num?: number;
+  offers?: IOffer[];
 }
