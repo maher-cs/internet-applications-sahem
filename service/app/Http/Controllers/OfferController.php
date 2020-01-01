@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Offer;
+use App\Project;
+use App\Student;
 use Illuminate\Http\Request;
+use Validator;
 
 class OfferController extends Controller
 {
@@ -24,7 +27,7 @@ class OfferController extends Controller
      */
     public function create()
     {
-        //
+        // 
     }
 
     /**
@@ -35,7 +38,38 @@ class OfferController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [ 
+            'description' => 'required', 
+            'project_id' => 'required', 
+        ]);
+        if ($validator->fails()) { 
+            return response()->json(['error'=>$validator->errors()], 401);            
+        }
+
+        $data = $request->all();
+
+        try {
+            Project::firstOrFail()->where('id', '=', $data['project_id'])->get()->toArray()[0];
+        } catch (\Exception $exception) {
+            return response()->json([
+                'message' => 'مشروع غير موجود',
+                'execption' => $exception
+            ], 400);
+        }
+
+        $user = $request->user();
+        $student_id = Student::where('user_id', '=', $user->id)->get()[0]['id'];
+
+        $offer['description'] = $data['description'];
+        $offer['project_id'] = $data['project_id'];
+        $offer['student_id'] = $student_id;
+
+        $c_offer = Offer::create($offer);
+
+        return response()->json([
+            'message'=>'تمت إضافة العرض بنجاح',
+            'offer'=> $c_offer
+        ], 200);
     }
 
     /**

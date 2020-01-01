@@ -32,5 +32,10 @@ Route::group(['middleware' => ['auth:api', 'isAuthority']], function(){
     Route::post('projects/create', 'ProjectController@store');
 });
 
+// offers routes
+Route::group(['middleware' => ['auth:api', 'IsStudent']], function(){
+    Route::post('offers/create', 'OfferController@store');
+});
+
 // categories routes
 Route::get('categories', 'CategoryController@index');
