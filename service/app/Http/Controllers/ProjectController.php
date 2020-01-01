@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Project;
 use App\Authority;
+use App\Category;
+use App\Skill;
+use Validator;
 
 use Illuminate\Http\Request;
 
@@ -42,7 +45,39 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [ 
+            'title' => 'required', 
+            'category' => 'required', 
+            'description' => 'required', 
+            'end_date' => 'required', 
+        ]);
+        if ($validator->fails()) { 
+            return response()->json(['error'=>$validator->errors()], 401);            
+        }
+        $data = $request->all();
+        $user = $request->user();
+        $categorystr = $data['category'];
+        $category_id = Category::where('category','=', $categorystr)->get()[0]['id'];
+        $authority_id = Authority::where('user_id', '=', $user->id)->get()[0]['id'];
+
+        $project['title'] = $data['title'];
+        $project['category_id'] = $category_id;
+        $project['description'] = $data['description'];
+        $project['end_date'] = $data['end_date'];
+        $project['authority_id'] = $authority_id;
+
+        $c_project = Project::create($project);
+
+        $skills = $data['skills'];
+        
+        $skillsIds = Skill::whereIn('skill', $skills)->get();
+        Project::find($c_project->id)->skills()->attach($skillsIds);
+
+        return response()->json([
+            'message'=>'تمت إضافة المشروع بنجاح',
+            'project'=> $c_project
+        ], 200);
+
     }
 
     /**

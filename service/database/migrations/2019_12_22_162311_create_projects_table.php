@@ -18,8 +18,8 @@ class CreateProjectsTable extends Migration
             $table->string('title');
             $table->unsignedBigInteger('category_id');
             $table->text('description');
-            $table->unsignedBigInteger('status_id');
-            $table->integer('progress');
+            $table->unsignedBigInteger('status_id')->default(1);
+            $table->integer('progress')->default(0);
             $table->string('end_date');
             $table->unsignedBigInteger('authority_id');
             $table->timestamps();
