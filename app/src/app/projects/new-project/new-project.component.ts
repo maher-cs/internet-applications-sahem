@@ -5,6 +5,7 @@ import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material';
 import { ProjectService } from 'src/app/services/project.service';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-project',
@@ -27,9 +28,12 @@ export class NewProjectComponent implements OnInit, OnDestroy {
 
   // subscriptions
   categoriesSubscription: Subscription;
-  skillsSubscription: Subscription;
+  newProjectSub: Subscription;
 
-  constructor(private projectService: ProjectService) { }
+  constructor(
+    private projectService: ProjectService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.buildNewProjectForm();
@@ -38,6 +42,7 @@ export class NewProjectComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.categoriesSubscription.unsubscribe();
+    this.newProjectSub.unsubscribe();
   }
 
   buildNewProjectForm(): void {
@@ -52,7 +57,26 @@ export class NewProjectComponent implements OnInit, OnDestroy {
   // create project button clicked
   createProject() {
     this.btnLoading = true;
-    this.projectService.createProject();
+    let project = {
+      title: this.title.value,
+      description: this.description.value,
+      end_date: this.toStringDate(this.deliveryDate.value),
+      category: this.category.value,
+      skills: this.skills
+    }
+    this.newProjectSub = this.projectService.createProject(project).subscribe(
+      data => {
+        this.btnLoading = false;
+        this.router.navigateByUrl('/projects/'+data.project.id);
+      },
+      err => console.log
+    );
+  }
+
+  toStringDate(date: Date) {
+    let strDate2 = date.toISOString().split("T");
+    let strDate = strDate2[0].split("-");
+    return `${strDate[0]}-${strDate[1]}-${strDate[2]}`;
   }
 
   // description form stuff
@@ -71,7 +95,7 @@ export class NewProjectComponent implements OnInit, OnDestroy {
   }
 
   // skills form stuff
-  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
+  readonly separatorKeysCodes: number[] = [ENTER];
 
   addSkill(event: MatChipInputEvent): void {
     const input = event.input;

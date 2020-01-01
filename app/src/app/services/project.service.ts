@@ -35,8 +35,11 @@ export class ProjectService {
         )
   }
 
-  createProject() {
-    
+  createProject(project: IProject) {
+    return this.http.post<{project:IProject}>(api.newProjectUrl, project)
+        .pipe(
+            catchError(this.handleError)
+        )
   }
 
   private handleError(err: HttpErrorResponse) {
