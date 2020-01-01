@@ -40,3 +40,5 @@ Route::group(['middleware' => ['auth:api', 'IsStudent']], function(){
 
 // categories routes
 Route::get('categories', 'CategoryController@index');
+// majors routes
+Route::get('majors', 'MajorController@index');

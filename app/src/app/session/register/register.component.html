@@ -3,6 +3,179 @@
     value: '*',
     params: { delay: 150 + 'ms', y: '50px' }
   }"
+  class="row mt-3"
 >
-  gggggggggggggggg
+  <div class="col-12 col-md-6">
+    <mat-form-field class="w-100">
+      <input
+        matInput
+        placeholder="اسمك الأول"
+        [formControl]="first_name"
+        required
+      />
+      <mat-error *ngIf="first_name.hasError('required')"
+        >يرجى إدخال اسمك الأول</mat-error
+      >
+    </mat-form-field>
+  </div>
+
+  <div class="col-12 col-md-6">
+    <mat-form-field class="w-100">
+      <input
+        matInput
+        placeholder="اسم العائلة"
+        [formControl]="last_name"
+        required
+      />
+      <mat-error *ngIf="last_name.hasError('required')"
+        >يرجى إدخال اسم العائلة</mat-error
+      >
+    </mat-form-field>
+  </div>
+
+  <div class="col-12 col-md-6">
+    <mat-form-field class="w-100">
+      <input
+        matInput
+        placeholder="اسم المستخدم"
+        [formControl]="username"
+        required
+      />
+      <mat-error *ngIf="username.hasError('required')"
+        >يرجى إدخال اسم المستخدم</mat-error
+      >
+    </mat-form-field>
+  </div>
+
+  <div class="col-12 col-md-6">
+    <mat-form-field class="w-100">
+      <input
+        matInput
+        placeholder="بريدك الاكتروني"
+        [formControl]="email"
+        required
+      />
+      <mat-error *ngIf="email.hasError('required')"
+        >يرجى إدخال بريدك الاكتروني</mat-error
+      >
+      <mat-error *ngIf="email.hasError('email')"
+        >يرجى إدخال بريد اكتروني صالح</mat-error
+      >
+    </mat-form-field>
+  </div>
+
+  <div class="col-12 col-md-6">
+    <mat-form-field class="w-100">
+      <mat-label>التخصص</mat-label>
+      <mat-select [formControl]="major">
+        <mat-option *ngFor="let maj of majors" [value]="maj">
+          {{ maj }}
+        </mat-option>
+      </mat-select>
+      <mat-error>يُرجى تحديد التخصص</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="col-12 col-md-6">
+    <mat-form-field class="w-100">
+      <input
+        matInput
+        placeholder="نبذة عن نفسك"
+        [formControl]="breif"
+        required
+      />
+      <mat-error *ngIf="breif.hasError('required')"
+        >يرجى كتابة نبذة عن نفسك</mat-error
+      >
+    </mat-form-field>
+  </div>
+
+  <div class="col-12 col-md-6">
+    <mat-form-field class="w-100">
+      <input
+        matInput
+        type="password"
+        placeholder="كلمة المرور"
+        [formControl]="password"
+        required
+        (input)="onPasswordInput()"
+      />
+      <mat-error *ngIf="password.hasError('required')"
+        >يرجى إدخال كلمة المرور</mat-error
+      >
+    </mat-form-field>
+  </div>
+
+  <div class="col-12 col-md-6">
+    <mat-form-field class="w-100">
+      <input
+        matInput
+        type="password"
+        placeholder="تأكيد كلمة المرور"
+        [formControl]="c_password"
+        required
+        (input)="onPasswordInput()"
+      />
+      <mat-error *ngIf="c_password.hasError('required')"
+        >يرجى تأكيد كلمة المرور</mat-error
+      >
+      <mat-error *ngIf="c_password.invalid && !c_password.hasError('required')"
+        >كلمات المرور غير متطابقة</mat-error
+      >
+    </mat-form-field>
+  </div>
+
+  <div class="col-12">
+    <mat-form-field class="w-100">
+      <mat-chip-list #chipList>
+        <mat-chip
+          *ngFor="let skill of skills"
+          [selectable]="true"
+          [removable]="true"
+          (removed)="removeSkill(skill)"
+        >
+          {{ skill }}
+          <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+        <input
+          placeholder="أضف مهاراتك..."
+          [matChipInputFor]="chipList"
+          [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+          [matChipInputAddOnBlur]="true"
+          (matChipInputTokenEnd)="addSkill($event)"
+        />
+      </mat-chip-list>
+    </mat-form-field>
+  </div>
+
+  <div class="col-12 d-flex">
+    <button
+      mat-raised-button
+      color="primary"
+      type="button"
+      class="row"
+      (click)="register()"
+      [disabled]="btnLoading || registerForm.invalid"
+      title="{{
+        registerForm.invalid
+          ? 'أكمل الحقول المطلوبة لتتمكن من التسجيل'
+          : 'سجل بحساب جديد'
+      }}"
+    >
+      <span *ngIf="btnLoading" class="col">جارِ التسجيل..</span>
+      <span *ngIf="btnLoading" class="col"
+        ><mat-spinner
+          class="d-inline-block mt-2"
+          diameter="20"
+          color="primary"
+        ></mat-spinner
+      ></span>
+      <span *ngIf="!btnLoading" class="col">تسجيل</span>
+    </button>
+  </div>
+  <div class="col-12">
+    <a class="d-block mx-auto text-center" routerLink="/home"
+      >الصفحة الرئيسية</a
+    >
+  </div>
 </div>

@@ -14,7 +14,14 @@ class MajorController extends Controller
      */
     public function index()
     {
-        //
+        $majors = Major::get()->toArray();
+
+        for($i = 0; $i < count($majors); $i++)
+        {
+            $majors[$i] = $majors[$i]['major'];
+        }
+
+        return response()->json($majors);
     }
 
     /**

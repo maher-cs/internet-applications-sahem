@@ -1,5 +1,6 @@
 .bg-color {
     background-color: #003740;
+    min-height: fit-content;
 }
 
 a {
@@ -17,4 +18,9 @@ a {
     .fit {
         width: 100%;
     }
+}
+
+.session-container {
+    max-width: 600px;
+    min-height: fit-content;
 }

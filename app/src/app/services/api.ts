@@ -9,5 +9,6 @@ export const api = {
   registerUrl: apiUrl + 'register',
   newProjectUrl: apiUrl + 'projects/create',
   newOfferUrl: apiUrl + 'offers/create',
-  acceptOfferUrl: apiUrl + 'offers/accept'
+  acceptOfferUrl: apiUrl + 'offers/accept',
+  majorsUrl: apiUrl + 'majors'
 };
