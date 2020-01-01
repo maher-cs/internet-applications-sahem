@@ -15,7 +15,7 @@
         <a mat-list-item routerLink="/session/register" *ngIf="!(isLoggedIn$ | async)">حساب جديد</a>
       </mat-nav-list>
     </mat-sidenav>
-    <mat-sidenav-content>
+    <mat-sidenav-content class="nav-side-container">
       <mat-progress-bar *ngIf="(barLoading$ | async)" mode="query" style="position: fixed; z-index: 10;"></mat-progress-bar>
       <mat-toolbar color="primary" [ngClass]="{'nav-home': isHomePage}">
         
@@ -72,5 +72,9 @@
       </mat-toolbar>
       
       <router-outlet></router-outlet>
+      <div class="ver-spacer"></div>
+      <footer >
+        <p class="text-center pt-3 font-weight-bold">جميع الحقوق محفوظة ساهم &copy;</p>
+      </footer>
     </mat-sidenav-content>
   </mat-sidenav-container>

@@ -1,6 +1,12 @@
 
 .sidenav-container {
+  min-height: 100vh;
   height: 100%;
+}
+
+.nav-side-container {
+  display: flex;
+  flex-direction: column;
 }
 
 .sidenav {
@@ -137,4 +143,12 @@ mat-icon {
     margin: 0 auto;
     margin-top: 40%;
   }
+}
+
+.ver-spacer {
+  flex-grow: 1;
+}
+
+footer {
+  background-color: #596e70;
 }
