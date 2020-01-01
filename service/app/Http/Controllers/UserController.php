@@ -24,6 +24,7 @@ class UserController extends Controller
             $success['token'] = $user->createToken('authToken')->accessToken;
             $success['username'] = $user->username;
             $success['role'] = $user->role_id;
+            $success['user_id'] = $user->id;
             return response()->json($success, $this->successStatus); 
         } 
         else{ 
@@ -41,6 +42,7 @@ class UserController extends Controller
      */
     public function logout(Request $request)
     {
+        sleep(10);
         $user = $request->user();
         $user->token()->revoke();
         return response()->json([

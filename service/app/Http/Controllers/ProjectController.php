@@ -18,7 +18,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::where('status_id', 1)->with('authority')->with('status')->with('category')->get()->toArray();
+        $projects = Project::where('status_id', 1)->with('authority')->with('status')->with('category')->with('offers')->get()->toArray();
 
         for($i = 0; $i < sizeof($projects); $i++)
         {
@@ -27,6 +27,8 @@ class ProjectController extends Controller
             $projects[$i]['category'] = $projects[$i]['category']['category'];
             unset($projects[$i]['category_id']);
             unset($projects[$i]['authority_id']);
+            $projects[$i]['offers_num'] = count($projects[$i]['offers']);
+            unset($projects[$i]['offers']);
         }
 
         return response()->json($projects);
