@@ -1,0 +1,84 @@
+<div class="container">
+  <!-- personal info -->
+  <mat-card class="row mt-4">
+    <div class="col-12 avatar-container my-2">
+      <img src="../../../assets/images/default-avatar.png" alt="" />
+    </div>
+    <mat-card-header class="col-12 mb-2">
+      <mat-card-title class="font-weight-bold"
+        >الاسم:
+        {{ student?.first_name + " " + student?.last_name }}</mat-card-title
+      >
+    </mat-card-header>
+    <mat-card-content class="col-12 mb-2">
+      <p>التخصص: {{ student?.major }}</p>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- breif -->
+  <mat-card class="row my-3">
+    <div class="row">
+      <div class="col-12">
+        <mat-card-header class="border-bottom mb-2">
+          <mat-card-title class="font-weight-bold">نبذة</mat-card-title>
+        </mat-card-header>
+      </div>
+      <div class="col">
+        <mat-card-content>
+          <p>
+            {{ student?.breif }}
+          </p>
+        </mat-card-content>
+      </div>
+    </div>
+  </mat-card>
+
+  <!-- skills -->
+  <mat-card class="row my-3">
+    <div class="row">
+      <div class="col-12">
+        <mat-card-header class="border-bottom mb-2">
+          <mat-card-title class="font-weight-bold">المهارات</mat-card-title>
+        </mat-card-header>
+      </div>
+      <div class="col">
+        <mat-card-content>
+          <mat-chip-list>
+            <mat-chip *ngFor="let skill of student?.skills">
+              {{ skill }}
+            </mat-chip>
+          </mat-chip-list>
+        </mat-card-content>
+      </div>
+    </div>
+  </mat-card>
+
+  <!-- offers -->
+  <div class="row my-3">
+
+    <mat-card class="col-12 my-1">
+        <mat-card-header>
+          <mat-card-title class="font-weight-bold">العروض</mat-card-title>
+        </mat-card-header>
+      </mat-card>
+
+    <!-- list -->
+    <mat-card *ngFor="let offer of student?.offers" class="col-12 border">
+      <div class="row">
+        <div class="col">
+          <mat-card-content>
+            <div class="row mt-2">
+                <p class="col-12 my-2">
+                  {{ offer.project.title }}
+                </p>
+              
+              <mat-card-subtitle class="col-12 m-0">
+                <p class="text-decoration-none">{{ offer.description }}</p>
+              </mat-card-subtitle>
+            </div>
+          </mat-card-content>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+</div>

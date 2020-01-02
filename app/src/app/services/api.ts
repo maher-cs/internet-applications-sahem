@@ -10,5 +10,6 @@ export const api = {
   newProjectUrl: apiUrl + 'projects/create',
   newOfferUrl: apiUrl + 'offers/create',
   acceptOfferUrl: apiUrl + 'offers/accept',
-  majorsUrl: apiUrl + 'majors'
+  majorsUrl: apiUrl + 'majors',
+  studentUrl: apiUrl + 'students'
 };
