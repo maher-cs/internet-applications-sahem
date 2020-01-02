@@ -55,7 +55,11 @@ export class AuthService {
     this.studentAuth.handle(data);
     this.refreshStudentStatus();
     this.setAuthTimer();
-    this.router.navigateByUrl('/projects/list');
+    if(data.student_id) {
+      this.router.navigateByUrl('/students/'+data.student_id);
+    } else if(data.authority_id) {
+      this.router.navigateByUrl('/home');
+    }
   }
 
   setAuthTimer() {

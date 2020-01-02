@@ -22,6 +22,8 @@ export class MainNavComponent implements OnInit {
   isStudent$: Observable<boolean> = this.authService.isStudent$;
   isAuthority$: Observable<boolean> = this.authService.isAuthority$;
 
+  studentLink = "/home";
+
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
@@ -37,6 +39,10 @@ export class MainNavComponent implements OnInit {
 
   ngOnInit() {
     this.checkHomePage();
+    let student_id = localStorage.getItem('student_id');
+    if(student_id) {
+      this.studentLink = "/students/" + student_id;
+    }
   }
 
   isHandSet() {

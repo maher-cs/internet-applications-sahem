@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller; 
 use App\User; 
 use App\Student; 
+use App\Authority; 
 use App\Major; 
 use App\Skill; 
 use Illuminate\Support\Facades\Auth; 
@@ -25,6 +26,13 @@ class UserController extends Controller
             $success['username'] = $user->username;
             $success['role'] = $user->role_id;
             $success['user_id'] = $user->id;
+            if($success['role'] == 1) {
+                $authority = Authority::where('user_id','=', $success['user_id'])->get()->toArray()[0];
+                $success['authority_id'] = $authority['id'];
+            } else if ($success['role'] == 2) {
+                $student = Student::where('user_id','=', $success['user_id'])->get()->toArray()[0];
+                $success['student_id'] = $student['id'];
+            }
             return response()->json($success, $this->successStatus); 
         } 
         else{ 
@@ -42,7 +50,6 @@ class UserController extends Controller
      */
     public function logout(Request $request)
     {
-        sleep(10);
         $user = $request->user();
         $user->token()->revoke();
         return response()->json([

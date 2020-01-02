@@ -18,6 +18,7 @@ export class AuthAuthorityService {
   handle(user) {
     this.setRole(user);
     localStorage.setItem('id', user.user_id);
+    localStorage.setItem('authority_id', user.authority_id);
   }
 
   setRole(user) {

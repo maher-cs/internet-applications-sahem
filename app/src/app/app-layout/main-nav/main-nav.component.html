@@ -67,6 +67,7 @@
           <img  mat-button [matMenuTriggerFor]="menu" class="d-block" src="../../../assets/images/default-avatar.png" alt="" />
           <mat-menu #menu="matMenu">
             <button mat-menu-item (click)="logout()">سجل خروج</button>
+            <button *ngIf="(isStudent$ | async)" mat-menu-item [routerLink]="studentLink">حسابي</button>
           </mat-menu>
         </div>
       </mat-toolbar>

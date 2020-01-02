@@ -17,6 +17,8 @@ export class AuthStudentService {
 
   handle(user) {
     this.setRole(user);
+    localStorage.setItem('id', user.user_id);
+    localStorage.setItem('student_id', user.student_id);
   }
 
   setRole(user) {
