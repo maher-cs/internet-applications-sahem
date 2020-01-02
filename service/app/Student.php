@@ -27,6 +27,6 @@ class Student extends Model
 
     public function offers()
     {
-        return $this->hasMany('App\Offer');
+        return $this->hasMany('App\Offer')->with('project')->with('status');
     }
 }

@@ -33,6 +33,9 @@ Route::group(['middleware' => ['auth:api', 'isAuthority']], function(){
     Route::post('offers/accept', 'OfferController@accept');
 });
 
+// students routes
+Route::post('students', 'StudentController@show');
+
 // offers routes
 Route::group(['middleware' => ['auth:api', 'IsStudent']], function(){
     Route::post('offers/create', 'OfferController@store');

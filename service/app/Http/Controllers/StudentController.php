@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Student;
 use Illuminate\Http\Request;
-use UserController;
+use Validator;
 
 class StudentController extends Controller
 {
@@ -45,9 +45,33 @@ class StudentController extends Controller
      * @param  \App\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function show(Student $student)
+    public function show(Request $student)
     {
-        //
+        $validator = Validator::make($student->all(), [ 
+            'id' => 'required'
+        ]);
+        try {
+            $student = Student::findOrFail($student->id);
+        } catch (\Exception $exception) {
+            return response()->json([
+                'message' => 'لا يوجد طالب بهذا الرقم!',
+                'execption' => $exception
+            ], 404);
+        }
+        $student = $student->with('major')->with('skills')->with('user')->with('offers')->where('id','=',$student->id)->get()->toArray()[0];
+
+        $student['major'] = $student['major']['major'];
+
+        for($i = 0; $i < sizeof($student['skills']); $i++)
+        {
+            $student['skills'][$i] = $student['skills'][$i]['skill'];
+        }
+        for($i = 0; $i < sizeof($student['offers']); $i++)
+        {
+            $student['offers'][$i]['status'] = $student['offers'][$i]['status']['status'];
+        }
+
+        return response()->json($student);
     }
 
     /**
