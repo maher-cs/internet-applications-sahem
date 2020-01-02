@@ -7,6 +7,9 @@ you need node.js and angular-cli installed to run the project
 
 you can download node.js from https://nodejs.org/en/download/
 
+also, you need to have php, mysql and any server. you might use xampp from https://www.apachefriends.org/index.html
+You need to install composer and laravel
+
 after downloading node.js, you need to install angular-cli
 
 windows > cmd:
@@ -30,4 +33,12 @@ for angular:
 
 then open the browser on http://localhost:4200
 
+for laravel:
+
+    cd service
+    composer install
+    php artisan migrate:fresh
+    php artisan passport:install
+    php artisan db:seed
+    php artisan serve
 
