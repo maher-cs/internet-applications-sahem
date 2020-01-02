@@ -57,7 +57,9 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.projectSubscription.unsubscribe();
+    if(this.projectSubscription) {
+      this.projectSubscription.unsubscribe();
+    }
     if(this.newOfferSub) {
       this.newOfferSub.unsubscribe();
     }

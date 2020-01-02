@@ -41,8 +41,12 @@ export class NewProjectComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.categoriesSubscription.unsubscribe();
-    this.newProjectSub.unsubscribe();
+    if(this.categoriesSubscription) {
+      this.categoriesSubscription.unsubscribe();
+    }
+    if(this.newProjectSub) {
+      this.newProjectSub.unsubscribe();
+    }
   }
 
   buildNewProjectForm(): void {
